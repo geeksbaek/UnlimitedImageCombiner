@@ -2,6 +2,7 @@
 window.onresize = resizeEvent;
 
 function init() {
+  // 폭 버튼을 누르면 이미지 합침
   [].forEach.call($('#radio>button'), function (element) {
     $(element).bind('click', function () {
       if (window.files != undefined && window.files.length > 1) {
@@ -10,6 +11,7 @@ function init() {
     });
   });
 
+  // 수동 폭 입력 폼에서 엔터를 누르면 이미지 합침
   $('#width').keyup(function (e) {
     if (window.files != undefined && window.files.length > 1) {
       if (e.keyCode == 13 && $('#width').val() != '') {
@@ -36,21 +38,24 @@ function init() {
     }
   });
 
-  $('.alert-info').center();
-  $('.alert-info').fadeIn(300);
+  $('.close').click(function () {
+    $(this).parent().fadeOut(200);
+  });
+
+  $('#introduce_message').center();
+  $('#introduce_message').fadeIn(300);
 
   handleInit();
 }
 
 function handleInit() {
-  $('#download').addClass('disabled');
   $('canvas').remove();
+  $('#download').addClass('disabled');
   $('#download').unbind('click', download);
 }
 
 function resizeEvent() {
-  $('.alert-info').center();
-  $('.alert-warning').center();
+  [].forEach.call($('.alert'), function (element) { $(element).center(); });
 }
 
 function handleFiles(files) {
@@ -59,10 +64,11 @@ function handleFiles(files) {
     return;
   }
 
-  $('canvas').remove();
   $('.alert').hide();
+  $('canvas').remove();
   $('#download').unbind('click', download);
 
+  window.files = files || window.files;
   var URL = window.webkitURL || window.URL;
   var images = [];
   var maxWidth = Number.MIN_VALUE, minWidth = Number.MAX_VALUE;
@@ -77,7 +83,9 @@ function handleFiles(files) {
 
   loader.addCompletionListener(function (e) {
     var heights = [];
-    var devideValue = $('#radio>.active').text() == '수동 폭' ? $('#width').val() : $('#radio>.active').text() == '자동 최대 폭' ? maxWidth : minWidth;
+    var devideValue = $('#radio>.active').text() == '수동 폭' ?
+      $('#width').val() : $('#radio>.active').text() == '자동 최대 폭' ?
+      maxWidth : minWidth;
 
     // 이미지들의 최종 높이 = realSumHeight
     // 캔버스의 개수 = sumHeightIndex
@@ -118,9 +126,14 @@ function handleFiles(files) {
     }
 
     if (sumHeightIndex > 0) {
-      $('.alert-warning>p:first-child').text("결과물의 높이가 " + parseInt(realSumHeight) + "px로, 단일 파일 최대 높이인 32000px을 초과했습니다. 총 " + (sumHeightIndex + 1) + "개의 파일로 분할되어 합쳐집니다.");
-      $('.alert-warning').center();
-      $('.alert-warning').show();
+      $('#success_multiple>p').first().text("결과물의 높이가 " + parseInt(realSumHeight) +
+        "px로, 저희가 지원하는 단일 파일 최대 높이인 32000px을 초과했기 때문에 " +
+        (sumHeightIndex + 1) + "개의 파일로 분할되어 합쳐졌습니다.");
+      $('#success_multiple').center();
+      $('#success_multiple').show();
+    } else {
+      $('#success').center();
+      $('#success').show();
     }
 
     $('#download').removeClass('disabled');
@@ -128,8 +141,8 @@ function handleFiles(files) {
     $('canvas').show();
   });
 
-  for (var i = 0, max = files.length; i < max; i++) {
-    var imgaeURL = URL.createObjectURL(files[i]);
+  for (var i = 0, max = window.files.length; i < max; i++) {
+    var imgaeURL = URL.createObjectURL(window.files[i]);
     var pxImage = new PxLoaderImage(imgaeURL);
     pxImage.imageNumber = i;
     loader.add(pxImage);

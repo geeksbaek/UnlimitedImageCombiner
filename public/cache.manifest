@@ -1,0 +1,28 @@
+CACHE MANIFEST
+# Version 1.5.3.3
+
+CACHE:
+
+./javascripts/jquery.min.js
+./javascripts/FileSaver.min.js
+./javascripts/canvas-to-blob.min.js
+
+./javascripts/bootstrap/css/bootstrap.css
+./javascripts/bootstrap/css/bootstrap.min.css
+./javascripts/bootstrap/css/bootstrap-responsive.css
+./javascripts/bootstrap/css/bootstrap-responsive.min.css
+./javascripts/bootstrap/img/glyphicons-halflings.png
+./javascripts/bootstrap/img/glyphicons-halflings-white.png
+./javascripts/bootstrap/js/bootstrap.js
+./javascripts/bootstrap/js/bootstrap.min.js
+
+./javascripts/PxLoader/PxLoader.js
+./javascripts/PxLoader/PxLoaderImage.js
+./javascripts/PxLoader/PxLoaderSound.js
+./javascripts/PxLoader/PxLoaderVideo.js
+
+NETWORK:
+
+./index.html
+./javascripts/UnlimitedImageCombiner.js
+./stylesheets/UnlimitedImageCombiner.css

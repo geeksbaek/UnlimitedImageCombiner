@@ -1,0 +1,65 @@
+﻿* {
+  font-family: 'Malgun Gothic';
+}
+
+body {
+  padding: 0;
+}
+
+.alert {
+  display: none;
+  max-width: 50%;
+}
+
+.alert > p {
+  margin-top: 10px;
+}
+
+.navbar-inner {
+  border: 0;
+  padding: 0;
+  height: 50px;
+}
+
+.container {
+  margin: 10px auto 10px auto;
+  height: 30px;
+  max-width: 900px;
+  width: auto;
+}
+
+#radio {
+  float: left;
+  display: inline-block;
+  padding: 0 10px 0 10px;
+}
+
+#downloader {
+  float: right;
+  display: inline-block;
+  padding: 0 10px 0 10px;
+}
+
+#mainForm {
+  float: right;
+  display: inline-block;
+  padding: 0 10px 0 10px;
+}
+
+#images {
+  width: 200px;
+}
+
+#width {
+  width: 35px;
+  display: inline-block;
+  margin: 0 0 0 5px;
+}
+
+#content {
+  padding: 10px;
+}
+
+canvas {
+  display: block;
+}

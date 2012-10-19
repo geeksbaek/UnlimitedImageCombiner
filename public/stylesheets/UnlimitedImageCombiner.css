@@ -11,9 +11,9 @@ body {
   max-width: 50%;
 }
 
-.alert > p {
-  margin-top: 10px;
-}
+  .alert > p {
+    margin-top: 10px;
+  }
 
 .navbar-inner {
   border: 0;
@@ -28,36 +28,38 @@ body {
   width: auto;
 }
 
-#radio {
-  float: left;
-  display: inline-block;
-  padding: 0 10px 0 10px;
-}
+  .container > div {
+    float: left;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    display: inline-block;
+  }
 
-#downloader {
-  float: right;
-  display: inline-block;
-  padding: 0 10px 0 10px;
-}
-
-#mainForm {
-  float: right;
-  display: inline-block;
-  padding: 0 10px 0 10px;
-}
+  .container > div:last-child {
+    float: right;
+  }
 
 #images {
-  width: 200px;
+  display: none;
 }
 
 #width {
   width: 35px;
+  height: 18px;
   display: inline-block;
   margin: 0 0 0 5px;
 }
 
 #content {
-  padding: 10px;
+  padding: 1%;
+}
+
+#preview {
+  background-color: #0094ff;
+  opacity: 0.3;
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
 }
 
 canvas {

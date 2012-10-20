@@ -23,7 +23,7 @@ body {
 
 .container {
   margin: 10px auto 10px auto;
-  height: 30px;
+  height: 26px;
   max-width: 900px;
   width: auto;
 }
@@ -35,9 +35,9 @@ body {
     display: inline-block;
   }
 
-  .container > div:last-child {
-    float: right;
-  }
+    .container > div:last-child {
+      float: right;
+    }
 
 #images {
   display: none;
@@ -55,13 +55,41 @@ body {
 }
 
 #preview {
-  background-color: #0094ff;
-  opacity: 0.3;
-  width: 100%;
-  height: 100px;
-  border-radius: 10px;
+  display: block;
+  opacity: 0.7;
+  padding-top: 5px;
+  height: 120px;
+  overflow: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
+
+  #preview > img:first-child {
+    margin: 0 5px 0 5px;
+  }
+
+  #preview > img {
+    height: 90px;
+    margin: 0 5px 0 0;
+    border: 2px solid #000;
+    border-radius: 10px;
+  }
+
+  #preview > img:hover {
+    cursor: all-scroll;
+  }
+
+  #preview > .over {
+    border: 2px dashed #000;
+  }
 
 canvas {
   display: block;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

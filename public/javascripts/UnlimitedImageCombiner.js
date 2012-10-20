@@ -91,7 +91,6 @@ function allClear() {
 
   window.UIC = {
     files: [],
-    images: [],
     maxWidth: Number.MIN_VALUE,
     minWidth: Number.MAX_VALUE,
     loader: new PxLoader,
@@ -102,11 +101,13 @@ function allClear() {
   UIC.loader.addProgressListener(function (e) {
     UIC.maxWidth = Math.max(UIC.maxWidth, e.resource.img.width);
     UIC.minWidth = Math.min(UIC.minWidth, e.resource.img.width);
-    UIC.images[e.resource.imageNumber] = { src: e.resource.img, height: e.resource.img.height };
 
     var img = $('#preview>img')[e.resource.imageNumber];
 
     $(img).attr('src', e.resource.img.src);
+    $(img).data('img', e.resource.img);
+    $(img).data('count', e.resource.imageNumber);
+
     img.addEventListener('dragstart', handleDragStart, false);
     img.addEventListener('dragenter', handleDragEnter, false);
     img.addEventListener('dragover', handleDragOver, false);
@@ -118,11 +119,7 @@ function allClear() {
 
 function handleDragStart(e) {
   $(this).css('opacity', '0.4');
-
   UIC.dragSrcEl = this;
-
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', $(this).attr('src'));
 }
 
 function handleDragEnter(e) {
@@ -131,8 +128,6 @@ function handleDragEnter(e) {
 
 function handleDragOver(e) {
   if (e.preventDefault) { e.preventDefault(); }
-  e.dataTransfer.dropEffect = 'move';
-
   return false;
 }
 
@@ -144,8 +139,14 @@ function handleDrop(e) {
   if (e.stopPropagation) { e.stopPropagation(); }
 
   if (UIC.dragSrcEl != this) {
+    var src = $(UIC.dragSrcEl).attr('src');
+    var img = $(UIC.dragSrcEl).data('img');
+
     $(UIC.dragSrcEl).attr('src', $(this).attr('src'));
-    $(this).attr('src', e.dataTransfer.getData('text/html'));
+    $(UIC.dragSrcEl).data('img', $(this).data('img'));
+
+    $(this).attr('src', src);
+    $(this).data('img', img);
   }
 
   return false;
@@ -172,12 +173,13 @@ function combineImage() {
   var sumHeight = [{ height: 0, count: 0 }];
   var sumHeightIndex = 0;
   var realSumHeight = 0;
+  var images = $('#preview>img');
 
   // 이미지들의 최종 높이 = realSumHeight
   // 캔버스의 개수 = sumHeightIndex
   // 각 캔버스의 높이와 캔버스에 들어갈 이미지의 개수 = sumHeight
-  for (var i = 0, max = UIC.images.length; i < max; i++) {
-    heights.push(UIC.images[i].src.height / (UIC.images[i].src.width / devideValue));
+  for (var i = 0, max = images.length; i < max; i++) {
+    heights.push($(images[i]).data('img').height / ($(images[i]).data('img').width / devideValue));
 
     if (sumHeight[sumHeightIndex].height + heights[i] + gap > 32000) { // 여기
       sumHeightIndex++;
@@ -210,7 +212,7 @@ function combineImage() {
     ctx[i].restore();
 
     for (var j = 0, max = sumHeight[i].count, accrueHeight = 0; j < max; j++) {
-      ctx[i].drawImage(UIC.images[totalCount].src, 0, accrueHeight, devideValue, heights[totalCount]);
+      ctx[i].drawImage($(images[totalCount]).data('img'), 0, accrueHeight, devideValue, heights[totalCount]);
       accrueHeight += heights[totalCount] + (j == max - 1 ? 0 : gap); // 여기
       totalCount++;
     }

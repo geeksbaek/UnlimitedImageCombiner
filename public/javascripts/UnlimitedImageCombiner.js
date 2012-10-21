@@ -2,24 +2,6 @@
 window.onresize = resizeEvent;
 
 function init() {
-  // 폭 버튼을 누르면 이미지 합침
-  [].forEach.call($('#radio>button'), function (element) {
-    $(element).bind('click', function () {
-      if (window.UIC.files != undefined && window.UIC.files.length > 1) {
-        combineImage();
-      }
-    });
-  });
-
-  // 수동 폭 입력 폼에서 엔터를 누르면 이미지 합침
-  $('#width').keyup(function (e) {
-    if (window.UIC.files != undefined && window.UIC.files.length > 1) {
-      if (e.keyCode == 13 && $('#width').val() != '') {
-        combineImage();
-      }
-    }
-  });
-
   $('#width').keydown(function (event) {
     // Allow: backspace, delete, tab, escape, and enter
     if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||

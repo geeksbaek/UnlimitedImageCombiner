@@ -39,8 +39,30 @@ body {
       float: right;
     }
 
+#input-div {
+  position: relative;
+  width: 80px;
+  height: 26px;
+  overflow: hidden;
+}
+
+#trick-input {
+  width: 80px;
+  height: 26px;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
 #images {
-  display: none;
+  width: 80px;
+  height: 26px;
+  font-size: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  opacity: 0;
 }
 
 #width {

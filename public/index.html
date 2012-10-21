@@ -35,10 +35,9 @@
         <button id="download" class="btn btn-success btn-small">이미지 저장</button>
       </div>
 
-      <input id="images" type="file" multiple="multiple" accept="image/*" onchange="uploadEvent(this.files)" />
-
-      <div id="browser" class="input-append">
-        <button id="browser-trick" class="btn btn-small" onclick="$('input[id=images]').click();">찾아보기</button>
+      <div id="input-div">
+        <input id="trick-input" class="btn btn-small" type="button" value="찾아보기" />
+        <input id="images" type="file" multiple="multiple" accept="image/*" onchange="uploadEvent(this.files)" />
       </div>
     </div>
 

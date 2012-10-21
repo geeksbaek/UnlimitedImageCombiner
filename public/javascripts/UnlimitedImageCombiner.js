@@ -106,7 +106,6 @@ function allClear() {
 
     $(img).attr('src', e.resource.img.src);
     $(img).data('img', e.resource.img);
-    $(img).data('count', e.resource.imageNumber);
 
     img.addEventListener('dragstart', handleDragStart, false);
     img.addEventListener('dragenter', handleDragEnter, false);

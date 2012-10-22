@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Version 1.5.4.7
+# Version 1.5.4.9
 
 CACHE:
 
@@ -21,9 +21,11 @@ CACHE:
 ./javascripts/PxLoader/PxLoaderSound.js
 ./javascripts/PxLoader/PxLoaderVideo.js
 
-./javascripts/jquery.nanoscroller.min.js
-./stylesheets/nanoscroller.css
+#./javascripts/jquery.nanoscroller.min.js
+#./stylesheets/nanoscroller.css
 
+#./javascripts/jquery.MyThumbnail.js
+#./stylesheets/MyThumbnail.css
 
 NETWORK:
 

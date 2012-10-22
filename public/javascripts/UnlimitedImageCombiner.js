@@ -77,7 +77,8 @@ function allClear() {
     minWidth: Number.MAX_VALUE,
     loader: new PxLoader,
     count: 0,
-    dragSrcEl: null
+    dragSrcEl: null,
+    dragBeforeEl: null
   };
 
   UIC.loader.addProgressListener(function (e) {
@@ -93,7 +94,7 @@ function allClear() {
     img.addEventListener('dragenter', handleDragEnter, false);
     img.addEventListener('dragover', handleDragOver, false);
     img.addEventListener('dragleave', handleDragLeave, false);
-    img.addEventListener('drop', handleDrop, false);
+    //img.addEventListener('drop', handleDrop, false);
     img.addEventListener('dragend', handleDragEnd, false);
   });
 }
@@ -101,10 +102,22 @@ function allClear() {
 function handleDragStart(e) {
   $(this).css('opacity', '0.4');
   UIC.dragSrcEl = this;
+  UIC.dragBeforeEl = this;
 }
 
 function handleDragEnter(e) {
+  var _beforeSrc = $(UIC.dragBeforeEl).attr('src');
+  var _beforeImg = $(UIC.dragBeforeEl).data('img');
+
+  $(UIC.dragBeforeEl).attr('src', $(this).attr('src'));
+  $(UIC.dragBeforeEl).data('img', $(this).data('img'));
+
+  $(this).attr('src', _beforeSrc);
+  $(this).data('img', _beforeImg);
+
   $(this).addClass('over');
+
+  UIC.dragBeforeEl = this;
 }
 
 function handleDragOver(e) {
@@ -118,17 +131,6 @@ function handleDragLeave(e) {
 
 function handleDrop(e) {
   if (e.stopPropagation) { e.stopPropagation(); }
-
-  if (UIC.dragSrcEl != this) {
-    var src = $(UIC.dragSrcEl).attr('src');
-    var img = $(UIC.dragSrcEl).data('img');
-
-    $(UIC.dragSrcEl).attr('src', $(this).attr('src'));
-    $(UIC.dragSrcEl).data('img', $(this).data('img'));
-
-    $(this).attr('src', src);
-    $(this).data('img', img);
-  }
 
   return false;
 }

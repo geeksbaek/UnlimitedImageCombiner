@@ -217,8 +217,8 @@ function combineImage() {
 function download() {
   [].forEach.call(document.querySelectorAll('#content>canvas'), function (element, index) {
     element.toBlob(function (blob) {
-      if (window.saveAs) {
-        window.saveAs(blob, "result " + (index + 1) + ".png");
+      if (navigator.msSaveOrOpenBlob !== undefined) {
+        navigator.msSaveOrOpenBlob(blob, "result " + (index + 1) + ".png");
       } else {
         navigator.saveBlob(blob, "result " + (index + 1) + ".png");
       }

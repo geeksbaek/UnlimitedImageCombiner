@@ -21,7 +21,6 @@ function init() {
   });
 
   window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-  window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder;
   window.saveAs = window.saveAs || window.webkitSaveAs || window.mozSaveAs || window.msSaveAs;
   navigator.saveBlob = navigator.saveBlob || navigator.msSaveBlob || navigator.mozSaveBlob || navigator.webkitSaveBlob;
 
@@ -164,7 +163,7 @@ function combineImage() {
   for (var i = 0, max = images.length; i < max; i++) {
     heights.push($(images[i]).data('img').height / ($(images[i]).data('img').width / devideValue));
 
-    if (sumHeight[sumHeightIndex].height + heights[i] + gap > 32000) { // 여기
+    if (sumHeight[sumHeightIndex].height + heights[i] + gap > 16000) { // 여기
       sumHeightIndex++;
       sumHeight[sumHeightIndex] = { height: 0, count: 0 };
     }
@@ -203,7 +202,7 @@ function combineImage() {
 
   if (sumHeightIndex > 0) {
     $('#success_multiple>p').first().text("결과물의 높이가 " + parseInt(realSumHeight) +
-      "px로, 저희가 지원하는 단일 파일 최대 높이인 32000px을 초과했기 때문에 " +
+      "px로, 저희가 지원하는 단일 파일 최대 높이인 16000px을 초과했기 때문에 " +
       (sumHeightIndex + 1) + "개의 파일로 분할되어 합쳐졌습니다.");
     $('#success_multiple').center().show();
   } else {
@@ -220,7 +219,7 @@ function download() {
       if (navigator.msSaveOrOpenBlob !== undefined) {
         navigator.msSaveOrOpenBlob(blob, "result " + (index + 1) + ".png");
       } else {
-        navigator.saveBlob(blob, "result " + (index + 1) + ".png");
+        saveAs(blob, "result " + (index + 1) + ".png");
       }
     });
   });

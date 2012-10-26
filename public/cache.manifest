@@ -3,7 +3,6 @@ CACHE MANIFEST
 
 CACHE:
 
-./javascripts/jquery.min.js
 ./javascripts/FileSaver.min.js
 ./javascripts/canvas-to-blob.min.js
 
@@ -20,12 +19,6 @@ CACHE:
 ./javascripts/PxLoader/PxLoaderImage.js
 ./javascripts/PxLoader/PxLoaderSound.js
 ./javascripts/PxLoader/PxLoaderVideo.js
-
-#./javascripts/jquery.nanoscroller.min.js
-#./stylesheets/nanoscroller.css
-
-#./javascripts/jquery.MyThumbnail.js
-#./stylesheets/MyThumbnail.css
 
 http://code.jquery.com/jquery-latest.js
 http://baekjongyeol-lab.appspot.com/js/geeksbaek.js

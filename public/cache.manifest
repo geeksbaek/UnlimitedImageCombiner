@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Version 2
+# Version 2.1
 
 CACHE:
 
@@ -30,8 +30,9 @@ CACHE:
 http://code.jquery.com/jquery-latest.js
 http://baekjongyeol-lab.appspot.com/js/geeksbaek.js
 
-./index.html
 ./javascripts/UnlimitedImageCombiner.js
 ./stylesheets/UnlimitedImageCombiner.css
 
 NETWORK:
+
+./index.html

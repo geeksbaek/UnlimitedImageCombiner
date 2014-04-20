@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="ko" manifest="cache.manifest">
+<head>
+<meta charset="utf-8" />
+<meta name="google-site-verification"
+	content="nnveydhXd4Ltsg59Zx_vPxPyvab6XXBgCjonWLDeumI" />
+<title>Unlimited Image Combiner - 무제한 이미지 합치기</title>
+<link rel="stylesheet"
+	href="javascripts/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="javascripts/bootstrap/css/bootstrap-responsive.min.css" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="javascripts/FileSaver.min.js"></script>
+<script src="javascripts/canvas-to-blob.min.js"></script>
+<script src="javascripts/bootstrap/js/bootstrap.min.js"></script>
+<script src="javascripts/PxLoader/PxLoader.js"></script>
+<script src="javascripts/PxLoader/PxLoaderImage.js"></script>
+<script src="javascripts/UnlimitedImageCombiner.js"></script>
+<link rel="stylesheet" href="stylesheets/UnlimitedImageCombiner.css" />
+<script src="http://baekjongyeol-lab.appspot.com/js/geeksbaek.js"></script>
+</head>
+<body>
+	<div class="navbar-inner">
+		<div class="container">
+			<div id="radio" class="btn-group" data-toggle="buttons-radio">
+				<button type="button" class="btn btn-small">자동 최대 폭</button>
+				<button type="button" class="btn btn-small">자동 최소 폭</button>
+				<button type="button" class="btn btn-small active">수동 폭</button>
+				<input id="width" type="text" autocomplete="off" value="600"
+					title="폭(px)을 입력하세요." maxlength="4" />
+			</div>
+
+			<div id="buttons" class="btn-group">
+				<button id="clear" class="btn btn-small">이미지 비우기</button>
+				<button id="combine" class="btn btn-primary btn-small">이미지
+					합치기</button>
+				<button id="download" class="btn btn-success btn-small">이미지
+					저장</button>
+			</div>
+
+			<div id="input-div">
+				<input id="trick-input" class="btn btn-small" type="button"
+					value="찾아보기" /> <input id="images" type="file" multiple="multiple"
+					accept="image/*" onchange="uploadEvent(this.files)" />
+			</div>
+		</div>
+
+		<div id="preview"></div>
+	</div>
+
+	<div id="content"></div>
+
+	<div id="alert">
+		<div id="success_multiple"
+			class="alert alert-block alert-warning fade in">
+			<button type="button" class="close">×</button>
+			<h4 class="alert-heading">여러 개의 파일로 합쳐졌습니다.</h4>
+			<p></p>
+			<p>
+				브라우저에서 <strong>'여러 개의 파일을 다운로드하려 하고 있습니다. 허용하시겠습니까?'</strong> 라는 경고를
+				보낸다면, 반드시 <strong>허용</strong>한다고 하셔야 정상적인 다운로드가 가능합니다.
+			</p>
+		</div>
+
+		<div id="success" class="alert alert-block alert-info fade in">
+			<button type="button" class="close">×</button>
+			<h4 class="alert-heading">이미지가 합쳐졌습니다.</h4>
+			<p>우측 상단의 '이미지 저장' 버튼을 눌러 다운로드 하세요!</p>
+		</div>
+
+		<div id="introduce_message"
+			class="alert alert-block alert-info fade in">
+			<button type="button" class="close">×</button>
+			<h4 class="alert-heading">Experimental!</h4>
+			<p>
+				Unlimited Image Combiner는 빠르게 여러 이미지를 하나의 이미지로 합치는 실험적인 웹 앱입니다. <strong>인터넷
+					익스플로러 10</strong>과 <strong>구글 크롬</strong>, <strong>모질라 파이어폭스</strong>의 최신
+				버전에서 동작합니다.
+			</p>
+			<p>우측 상단의 '파일 선택' 버튼을 눌러 이미지를 선택한 하세요. 화면에 미리보기가 표시되면 이미지가 모두 합쳐진
+				것입니다. 이 때 '이미지 저장' 버튼을 눌러 다운로드하세요.</p>
+			<p>이미지의 개수에 제한이 없으나, 높이가 16000px을 초과하게 되면 한 개 이상의 이미지로 분할되어
+				합쳐집니다. 많은 이미지를 합친 후 다운로드 할 때에는 시간이 걸릴 수 있으니 기다려주세요.</p>
+		</div>
+	</div>
+</body>
+</html>

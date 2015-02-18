@@ -1,4 +1,4 @@
-﻿window.onload = init;
+window.onload = init;
 window.onresize = resizeEvent;
 
 function init() {

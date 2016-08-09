@@ -1,0 +1,119 @@
+﻿* {
+  font-family: 'Malgun Gothic';
+}
+
+body {
+  padding: 0;
+}
+
+.alert {
+  display: none;
+  max-width: 50%;
+}
+
+  .alert > p {
+    margin-top: 10px;
+  }
+
+.navbar-inner {
+  border: 0;
+  padding: 0;
+  height: 50px;
+}
+
+.container {
+  margin: 10px auto 10px auto;
+  height: 26px;
+  max-width: 900px;
+  width: auto;
+}
+
+  .container > div {
+    float: left;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    display: inline-block;
+  }
+
+    .container > div:last-child {
+      margin-right: 10px;
+      float: right;
+    }
+
+#input-div {
+  position: relative;
+  width: 80px;
+  height: 26px;
+  overflow: hidden;
+}
+
+#trick-input {
+  width: 80px;
+  height: 26px;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+#images {
+  width: 80px;
+  height: 26px;
+  font-size: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+#width {
+  width: 35px;
+  height: 16px;
+  display: inline-block;
+  margin: 0 0 0 5px;
+}
+
+#content {
+  padding: 1%;
+}
+
+#preview {
+  display: block;
+  opacity: 0.7;
+  padding-top: 5px;
+  height: 120px;
+  overflow: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+  #preview > img:first-child {
+    margin: 0 5px 0 5px;
+  }
+
+  #preview > img {
+    height: 90px;
+    width: 90px;
+    margin: 0 5px 0 0;
+    border: 2px solid #000;
+    border-radius: 10px;
+  }
+
+  #preview > img:hover {
+    cursor: all-scroll;
+  }
+
+  #preview > .over {
+    border: 2px dashed #000;
+  }
+
+canvas {
+  display: block;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

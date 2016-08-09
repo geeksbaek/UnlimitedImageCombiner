@@ -117,3 +117,7 @@ canvas {
   -webkit-user-select: none;
   user-select: none;
 }
+
+img {
+  object-fit: cover;
+}
